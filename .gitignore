@@ -4,3 +4,5 @@
 /public/images
 
 /node_modules
+
+/config/production.json

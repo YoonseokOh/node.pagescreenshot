@@ -1,15 +1,42 @@
 <html>
 <head>
-  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta content="website" property="og:type">
+  <meta content="{{services.name}}" property="og:site_name">
+  <meta content="{{services.url}}" property="og:url">
+  <meta content="{{services.title}}" property="og:title">
+  <meta content="{{services.description}}" property="og:description">
+  <meta content="{{services.image}}" property="og:image">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+  <title>{{services.name}}</title>
+
+  <title>{{title}}</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  {{#if googleAnalytics}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{googleAnalytics}}"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{googleAnalytics}}');
+    </script>
+  {{/if}}
 </head>
 
 <body>
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<form action="/capture" method="post">
-  url을 입력하세요 : <input type="text" name="url" value=""><br>
-  <br>
+<h1>{{services.title}}</h1>
+<form action="/screenshot" method="post">
+  <div>(필수) url을 입력하세요: <input type="text" name="url" value="" placeholder="https:// or http:// 붙여야함"></div>
+  <div>(선택) 너비 (기본값 {{option.width}}): <input type="text" name="width" value=""></div>
+  <div>(선택) 높이 (기본값 {{option.height}}): <input type="text" name="height" value=""></div>
+  <div>
+    (필수) 방법 <br>
+    <input type="radio" name="type" value="puppeteer" checked> puppeteer (default) <br>
+    <input type="radio" name="type" value="horseman"> horseman
+  </div>
   <button type="submit">Submit</button>
 </form>
 </body>

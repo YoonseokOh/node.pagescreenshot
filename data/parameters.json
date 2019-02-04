@@ -1,0 +1,15 @@
+{
+  "option": {
+    "width": 1200,
+    "height": 1200,
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+  },
+  "services": {
+    "name": "웹페이지 캡쳐 by yoonseokoh.com",
+    "url": "https://pagescreenshot.yoonseokoh.com",
+    "contact": "yoonseokoh@yoonseokoh.com",
+    "title": "웹페이지 캡쳐 by yoonseokoh.com",
+    "description": "web page screenshot by node.js with horseman and puppeteer library",
+    "image": "https://pagescreenshot.yoonseokoh.com/images/pagescreenshot.yoonseokoh.com.jpg"
+  }
+}
