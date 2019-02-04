@@ -17,3 +17,10 @@
 
 #### Sample site
 - https://pagescreenshot.yoonseokoh.com
+
+#### Tips
+- It could not display some languages which is not installed at OS.
+
+#### Issues
+- Asian language - https://github.com/GoogleChrome/puppeteer/issues/1143
+- Ubuntu OS - https://medium.com/@cloverinks/how-to-fix-puppetteer-error-ibx11-xcb-so-1-on-ubuntu-152c336368
