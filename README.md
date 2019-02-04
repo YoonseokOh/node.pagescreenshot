@@ -24,3 +24,4 @@
 #### Issues
 - Asian language - https://github.com/GoogleChrome/puppeteer/issues/1143
 - Ubuntu OS - https://medium.com/@cloverinks/how-to-fix-puppetteer-error-ibx11-xcb-so-1-on-ubuntu-152c336368
+- Asian languages install (ubuntu) - https://help.accusoft.com/PrizmDoc/v12.2/HTML/Installing_Asian_Fonts_on_Ubuntu_and_Debian.html
