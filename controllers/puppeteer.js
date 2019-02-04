@@ -2,7 +2,9 @@ module.exports = (function () {
   const puppeteer = require('puppeteer');
 
   async function getWebPageScreenShot(option) {
-    const browser = await puppeteer.launch();
+    // args for debian(ubuntu) dependencies
+    // refer: https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
     const page = await browser.newPage();
 
     const viewport = {
