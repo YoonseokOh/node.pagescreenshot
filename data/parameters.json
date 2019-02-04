@@ -2,7 +2,11 @@
   "option": {
     "width": 1200,
     "height": 1200,
-    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
+    "headers": {
+      "Accept-Charset": "utf-8",
+      "Content-Type": "text/html; charset=utf-8"
+    }
   },
   "services": {
     "name": "웹페이지 캡쳐 by yoonseokoh.com",

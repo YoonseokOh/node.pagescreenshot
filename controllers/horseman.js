@@ -7,6 +7,7 @@ module.exports = (function () {
 
       return horseman.open(option.url.href)
         .userAgent(option.userAgent)
+        .headers(option.headers)
         .viewport(option.width, option.height)
         .screenshot(`./public/images/${option.url.hostname}.jpg`)
         .then(() => {

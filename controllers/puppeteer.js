@@ -5,7 +5,10 @@ module.exports = (function () {
     try {
       // args for debian(ubuntu) dependencies
       // refer: https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
-      const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+      const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      });
       const page = await browser.newPage();
 
       const viewport = {
@@ -13,17 +16,18 @@ module.exports = (function () {
         height: option.height
       };
 
-      return page.setUserAgent(option.userAgent)
-        .then(() => {
-          return page.setViewport(viewport).then(async() => {
-            await page.goto(option.url.href);
-            await page.screenshot({path: `./public/images/${option.url.hostname}.jpg`});
+      return Promise.all([
+        page.setExtraHTTPHeaders(option.headers),
+        page.setUserAgent(option.userAgent),
+        page.setViewport(viewport)
+      ]).then(async() => {
+        await page.goto(option.url.href);
+        await page.screenshot({path: `./public/images/${option.url.hostname}.jpg`});
 
-            await browser.close();
+        await browser.close();
 
-            return Promise.resolve(`/images/${option.url.hostname}.jpg`);
-          })
-        });
+        return Promise.resolve(`/images/${option.url.hostname}.jpg`);
+      })
     } catch (e) {
       return Promise.reject(e);
     }

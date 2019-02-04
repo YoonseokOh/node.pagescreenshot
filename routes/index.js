@@ -12,17 +12,22 @@ router.post('/screenshot', function(req, res, next) {
       url: new URL(req.body.url),
       width: Number(req.body.width) || defaultParams.option.width,
       height: Number(req.body.height) || defaultParams.option.height,
-      userAgent: defaultParams.option.userAgent
+      userAgent: defaultParams.option.userAgent,
+      headers: defaultParams.option.headers
     };
 
     if (req.body.type) {
       if (req.body.type === 'puppeteer') {
         puppeteerCtrl.getWebPageScreenShot(option).then(redirectUrl => {
           res.redirect(redirectUrl);
+        }).catch(e => {
+          next(e);
         });
       } else if (req.body.type === 'horseman') {
         horsemanCtrl.getWebPageScreenShot(option).then(redirectUrl => {
           res.redirect(redirectUrl);
+        }).catch(e => {
+          next(e);
         });
       } else {
         next(new Error('invalid type'));
@@ -31,7 +36,7 @@ router.post('/screenshot', function(req, res, next) {
       next(new Error('type data is needed'));
     }
   } catch (e) {
-    next(e)
+    next(e);
   }
 });
 
