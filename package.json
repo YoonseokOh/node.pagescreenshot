@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "config": "^3.2.0",
+    "config": "^3.2.4",
     "cookie-parser": "^1.4.4",
     "debug": "~4.1.1",
     "express": "~4.17.1",
@@ -16,6 +16,6 @@
     "morgan": "~1.9.1",
     "node-horseman": "^3.3.0",
     "phantomjs-prebuilt": "^2.1.16",
-    "puppeteer": "^1.18.1"
+    "puppeteer": "^1.20.0"
   }
 }
