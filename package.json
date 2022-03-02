@@ -6,17 +6,17 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "config": "^3.3.1",
-    "cookie-parser": "^1.4.5",
-    "debug": "~4.1.1",
-    "express": "~4.17.1",
-    "express-handlebars": "^5.1.0",
-    "handlebars": "^4.7.6",
-    "http-errors": "~1.8.0",
-    "i": "^0.3.6",
+    "config": "^3.3.7",
+    "cookie-parser": "^1.4.6",
+    "debug": "~4.3.3",
+    "express": "~4.17.3",
+    "express-handlebars": "^6.0.2",
+    "handlebars": "^4.7.7",
+    "http-errors": "~2.0.0",
+    "i": "^0.3.7",
     "morgan": "~1.10.0",
     "node-horseman": "^3.3.0",
     "phantomjs-prebuilt": "^2.1.16",
-    "puppeteer": "^5.2.1"
+    "puppeteer": "^13.4.1"
   }
 }

@@ -11,7 +11,7 @@ const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.engine('.hbs', exphbs({
+app.engine('.hbs', exphbs.engine({
   defaultLayout: 'default',
   extname: '.hbs',
   layoutsDir: path.join(__dirname, 'views/layouts')
