@@ -13,7 +13,7 @@
     "url": "https://pagescreenshot.yoonseokoh.com",
     "contact": "yoonseokoh@yoonseokoh.com",
     "title": "웹페이지 캡쳐 by yoonseokoh.com",
-    "description": "web page screenshot by node.js with horseman and puppeteer library",
+    "description": "web page screenshot by node.js with puppeteer",
     "image": "https://pagescreenshot.yoonseokoh.com/images/pagescreenshot.yoonseokoh.com.jpg"
   }
 }

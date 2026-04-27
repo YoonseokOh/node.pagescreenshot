@@ -1,7 +1,7 @@
 # pagescreenshot.yoonseokoh.com
 
 ### Description
-- web page screenshot by node.js with horseman and puppeteer npm libraries.
+- web page screenshot by node.js with Puppeteer.
 - you can get sample code from https://github.com/yoonseokoh/node.pagescreenshot
 
 #### Prepare

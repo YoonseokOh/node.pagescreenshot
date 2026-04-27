@@ -1,37 +1,41 @@
 const express = require('express');
+const rateLimit = require('express-rate-limit');
 const router = express.Router();
-const horsemanCtrl = require('../controllers/horseman');
 const puppeteerCtrl = require('../controllers/puppeteer');
 const config = require('config');
 const cfg = config.get('cfg');
+const {
+  assertPublicHttpUrl,
+  parseScreenshotDimension
+} = require('../lib/request-security');
 
-router.post('/screenshot', function(req, res, next) {
+const screenshotLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 20,
+  standardHeaders: 'draft-8',
+  legacyHeaders: false
+});
+
+router.post('/screenshot', screenshotLimiter, async function(req, res, next) {
   try {
     const defaultParams = require('../data/parameters');
+    const url = await assertPublicHttpUrl(req.body.url);
     const option = {
-      url: new URL(req.body.url),
-      width: Number(req.body.width) || defaultParams.option.width,
-      height: Number(req.body.height) || defaultParams.option.height,
+      url,
+      width: parseScreenshotDimension(req.body.width, defaultParams.option.width, 'width'),
+      height: parseScreenshotDimension(req.body.height, defaultParams.option.height, 'height'),
       userAgent: defaultParams.option.userAgent,
       headers: defaultParams.option.headers
     };
 
-    if (req.body.type) {
-      if (req.body.type === 'puppeteer') {
-        puppeteerCtrl.getWebPageScreenShot(option).then(redirectUrl => {
-          res.redirect(redirectUrl);
-        }).catch(e => {
-          next(e);
-        });
-      } else if (req.body.type === 'horseman') {
-        horsemanCtrl.getWebPageScreenShot(option).then(redirectUrl => {
-          res.redirect(redirectUrl);
-        }).catch(e => {
-          next(e);
-        });
-      } else {
-        next(new Error('invalid type'));
-      }
+    if (req.body.type === 'puppeteer' || req.body.type === 'horseman') {
+      puppeteerCtrl.getWebPageScreenShot(option).then(redirectUrl => {
+        res.redirect(redirectUrl);
+      }).catch(e => {
+        next(e);
+      });
+    } else if (req.body.type) {
+      next(new Error('invalid type'));
     } else {
       next(new Error('type data is needed'));
     }
